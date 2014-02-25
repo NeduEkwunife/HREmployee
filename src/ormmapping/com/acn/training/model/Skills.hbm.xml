@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.acn.training.model.Skills" table="skills" lazy="false">
+		<id name="id" column="id" type="long" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="skill_name" column="skill_name" unique="true" type="string" length="255" not-null="true" lazy="false"/>
+		<set name="Users" table="users_skills" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="skillsid" not-null="true"/>
+			<many-to-many column="usersid" class="com.acn.training.model.Users">
+			</many-to-many>
+		</set>
+		<set name="Projects" table="projects_skills" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="skillsid" not-null="true"/>
+			<many-to-many column="projectsid" class="com.acn.training.model.Projects">
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
