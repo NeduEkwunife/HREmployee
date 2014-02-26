@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.acn.training.utilities.UserCredential, com.acn.training.model.Role" %>
 <!DOCTYPE html>
 <html>
@@ -14,9 +15,59 @@
 </style>
 </head>
 
-<body  style="background-image: url('images/home.jpg'); background-repeat:no-repeat; background-position:55% -40%;">
+<body onload='document.f.j_username.focus();' style="background-image: url('images/home1.jpg'); background-repeat:repeat; ">
+<c:if test="${not empty param.login_error}">
+		<div class="errorblock">
+			Your login attempt was not successful, try again.<br /> Reason :
+			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+		</div>
+	</c:if>
+	<table  border="0" align="right">
+		
+		<tr>
+			<td style="width: 260px;" />
+
+			<td style="width: 300px;">
+				<fieldset style="width: 330px; border: 1px solid green">
+					<legend
+						style="padding: 0.2em 0.5em; border: 3px solid green; color: grey; font-size: 90%; text-align: left;">Login</legend>
+					<form name='f' action="j_spring_security_check" method='POST'>
+						<table>
+							<tr>
+								<td></td>
+								<td><input type='text' name='j_username' value=''
+									placeholder="Username" style="width: 250px;"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type='password' name='j_password'
+									placeholder="Password" style="width: 250px;" /></td>
+							</tr>
+							<tr>
+								<td style="height: 20px;" />
+							</tr>
+							<tr>
+								<td></td>
+								<td align="right"><input name="submit" type="submit"
+									value="Login" /></td>
+								<td><input name="reset" type="reset" /></td>
+							</tr>
+						</table>
+
+
+					</form>
+				</fieldset>
+			</td>
+
+			<td style="width: 100px;" />
+
+		</tr>
+		
+	</table>
+	
+<!-- this part onward is no longer required 
 <div align="center">
-<h3>WELCOME, TO HR MANAGER</h3>
+
 	
 	<% //get value sent by Home servlet
   UserCredential cre = (UserCredential)request.getAttribute("sessData");
@@ -33,6 +84,7 @@
     <% //close the if statement 
    }%>
 </div>
+-->
 
 </body>
 </html>

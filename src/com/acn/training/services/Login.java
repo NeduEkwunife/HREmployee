@@ -37,26 +37,20 @@ public class Login extends HttpServlet {
 			
 			SessionManager.logParametersInSession(user, sess);
 			
-			/*if(user.getRole().getName().equals("user")) {
+			if(user.getRole().getName().equals("Employee")) {
 				RequestDispatcher rd = request.getRequestDispatcher("/user.jsp");
 				rd.forward(request, response);
-			} else if (user.getRole().getName().equals("admin")) {
+			} else if (user.getRole().getName().equals("HR") || user.getRole().getName().equals("SuperAdmin")) {
 				RequestDispatcher rd = request.getRequestDispatcher("/admin.jsp");
 				rd.forward(request, response);
-			} */
-			RequestDispatcher rd = request.getRequestDispatcher("Home");
-			rd.forward(request, response);
+			} 
 			
 		} catch (ClassCastException e) {
-			RequestDispatcher rd = request.getRequestDispatcher("Home");
-			rd.forward(request, response);
-			//response.sendRedirect("/" + request.getContextPath());
-			//e.printStackTrace();
+			response.sendRedirect("/" + request.getContextPath());
+			e.printStackTrace();
 		} catch (Exception ex) {
-			RequestDispatcher rd = request.getRequestDispatcher("Home");
-			rd.forward(request, response);
-			//ex.printStackTrace();
-			//response.sendRedirect("/" + request.getContextPath());
+			ex.printStackTrace();
+			response.sendRedirect("/" + request.getContextPath());
 		}
 	}
 
