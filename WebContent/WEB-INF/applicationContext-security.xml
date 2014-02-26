@@ -23,12 +23,12 @@
 		<intercept-url pattern="/EditUsers" access="hasAnyRole('HR', 'SuperAdmin')" />
 		<intercept-url pattern="/EditUser" access="hasRole('Employee')" />
 		<intercept-url pattern="/DeleteUsers" access="hasAnyRole('HR', 'SuperAdmin')" />
-		<intercept-url pattern="/login.jsp*" access="isAnonymous()" />
+		<intercept-url pattern="/Home" access="isAnonymous()" />
 
 		<intercept-url pattern="/**" access="permitAll" />
-		<access-denied-handler error-page="/Home" />
-		<form-login login-page="/login.jsp"
-			authentication-failure-url="/login.jsp?login_error=1"
+		<!-- <access-denied-handler error-page="/Home" />-->
+		<form-login login-page="/Home"
+			authentication-failure-url="/Home?login_error=1"
 			default-target-url="/Login" />
 		<logout invalidate-session="true" logout-url="/logout"
 			logout-success-url="/Home" />
