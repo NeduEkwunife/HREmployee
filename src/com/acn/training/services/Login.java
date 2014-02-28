@@ -38,8 +38,7 @@ public class Login extends HttpServlet {
 			SessionManager.logParametersInSession(user, sess);
 			
 			if(user.getRole().getName().equals("Employee")) {
-				RequestDispatcher rd = request.getRequestDispatcher("/user.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("ViewProfile");
 			} else if (user.getRole().getName().equals("HR") || user.getRole().getName().equals("SuperAdmin")) {
 				RequestDispatcher rd = request.getRequestDispatcher("/admin.jsp");
 				rd.forward(request, response);

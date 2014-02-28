@@ -27,7 +27,6 @@ import com.acn.training.utilities.UserCredential;
 @WebServlet("/UploadPicture")
 public class UploadPicture extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -38,6 +37,7 @@ public class UploadPicture extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		UserCredential cre = SessionManager.getUserCredential(request.getSession());
 		// TODO Auto-generated method stub
 		List<FileItem> items = null;
@@ -65,7 +65,7 @@ public class UploadPicture extends HttpServlet {
                 
 			}
 		}
-		response.sendRedirect("ViewProfile");
+		response.sendRedirect("EditUser");
 
 	}
 	}

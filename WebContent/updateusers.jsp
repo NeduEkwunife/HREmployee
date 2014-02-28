@@ -5,20 +5,108 @@ java.util.ArrayList, java.util.List, java.util.Arrays, org.orm.PersistentExcepti
 <head>
 <meta charset="ISO-8859-1">
 <title>Update_user</title>
-</head>
-<body>
-	<div align="center">
-		<h3>UPDATE USER</h3>
-	</div>
-	<br>
-	<br>
-	<div align="center">
-		<a href="ViewUsers">View Users</a>&nbsp;&nbsp; <a href="Home">Home</a>&nbsp;&nbsp;
-		<a href="logout">Logout</a>
-	</div>
-	<br>
-	<br>
+<style type="text/css" media="screen">
+#logout
+{
+	text-decoration:none;
+	color:#6B2400;
+	font-size:18px;
+}
+#menu ul
+{
+	margin:0;
+	padding:0;
+	list-style: none;
+	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
+	font-size:18px;
+	width:1020px;
+	
+	
+}
 
+#menu a{
+	text-decoration:none;
+	outline:none;
+	img-src:images/add-user.png;
+}
+
+
+li{
+	float:left;
+	width:170px;
+	height:85px;
+	position:relative;
+	cursor:pointer;
+	display:inline;
+	
+	
+}
+#menu a:link
+{
+	display:block;
+	background-color:#6B2400;
+	color:white;
+	text-decoration:none;
+	width:120px;
+	height:120px;
+	text-align:center;
+	padding:4px;
+	font-weight:bold;
+	border-radius:25px;
+	
+}
+a.add
+{
+	content:url('images/add-user.png');
+}
+a.edit
+{
+	content:url('images/edit-user.png');
+}
+a.view
+{
+	content:url('images/user.png');
+}
+a.home
+{
+	content:url('images/home.png');
+}
+#menu p
+{
+	margin-top:45px;
+	color:white;
+}
+.auto-style2 {
+	text-align: left;
+}
+.auto-style5 {
+	text-align: center;
+	color: #B532E5;
+}
+.auto-style9 {
+	text-align: right;
+	background-color: #D7D7D4;
+}
+.auto-style10 {
+	background-color: #D7D7D4;
+}
+.auto-style11 {
+	text-align: center;
+	background-color: #D7D7D4;
+}
+.auto-style12 {
+	background-color: #D1A1E3;
+	font-size: medium;
+	font-weight: bold;
+}
+</style>
+
+</head>
+<body style="background-color: #E6B85C; ">
+<div align="right"><a href="logout" id="logout"><p>Logout</p></a></div>
+<div class="auto-style2">
+<h3 class="auto-style5">ADMIN -&gt; Edit Users -&gt; Update User</h3>
+	
 	<div align="center">
 		<form name='updateuser' action="DeleteUsers" method='POST'>
 			<%
@@ -39,30 +127,32 @@ java.util.ArrayList, java.util.List, java.util.Arrays, org.orm.PersistentExcepti
 					Users usr = (Users) request.getAttribute("userData");
 					if (usr != null) {
 			%>
-			<table border="1" style="width: 300px">
+			<table border="1" style="width: 500px">
 				<tr>
-					<td>First Name:</td>
-					<td><input type="text" name="firstname"
-						value=<%=usr.getFirstname()%>></td>
+					<td class="auto-style11"><strong>First Name:</strong></td>
+					<td class="auto-style10">
+					<input type="text" name="firstname"
+						value=<%=usr.getFirstname()%> style="width: 400px"></td>
 				</tr>
 				<tr>
-					<td>Last Name:</td>
-					<td><input type="text" name="lastname"
-						value=<%=usr.getLastname()%>></td>
+					<td class="auto-style11"><strong>Last Name:</strong></td>
+					<td class="auto-style10">
+					<input type="text" name="lastname"
+						value=<%=usr.getLastname()%> style="width: 400px"></td>
 				</tr>
 				<tr>
-					<td>Email:</td>
-					<td><input type="email" readonly name="email"
-						value=<%=usr.getEmail()%>></td>
+					<td class="auto-style11"><strong>Email:</strong></td>
+					<td class="auto-style10"><input type="email" readonly name="email"
+						value=<%=usr.getEmail()%> style="width: 400px"></td>
 				</tr>
 				<tr>
-					<td>Enabled:</td>
-					<td><input type="number" name="enabled" min="0" max="1"
-						value=<%=usr.getEnabled()%>></td>
+					<td class="auto-style11"><strong>Enabled:</strong></td>
+					<td class="auto-style10"><input type="number" name="enabled" min="0" max="1"
+						value=<%=usr.getEnabled()%> style="width: 400px"></td>
 				</tr>
 				<tr>
-					<td>Role:</td>
-					<td>
+					<td class="auto-style11"><strong>Role:</strong></td>
+					<td class="auto-style10">
 						<select name="role">
 							<%for(Role rol : y) {%>
 							<option <%= (rol.getName().equals(usr.getRole().getName()))?"selected":"" %>> 	
@@ -73,20 +163,26 @@ java.util.ArrayList, java.util.List, java.util.Arrays, org.orm.PersistentExcepti
 					</td>
 				</tr>
 				<tr>
-					<td>Summary:</td>
-					<td><input type="text" name="summary"
-						value=<%=usr.getSummary()%>></td>
+					<td class="auto-style11"><strong>Summary:</strong></td>
+					<td class="auto-style10">
+					<input type="text" name="summary"
+						value=<%=usr.getSummary()%> style="width: 400px" ></td>
 				</tr>
 				<tr>
-					<td>Available:</td>
-					<td><input type="text" readonly name="available"
-						value=<%=usr.getAvailable()%>></td>
+					<td class="auto-style11"><strong>Available:</strong></td>
+					<td class="auto-style10">
+					<input type="text" readonly name="available"
+						value=<%=usr.getAvailable()%> style="width: 400px"></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td><input type="hidden" name="id" value=<%=usr.getId()%>><input
-						type="submit" value="Submit"> <a href="EditUsers"> <input
-							type="button" value="Cancel" />
+					<td class="auto-style11"></td>
+					<td class="auto-style9"><input type="hidden" name="id" value=<%=usr.getId()%>>
+					<strong>
+					<input
+						type="submit" value="Submit" class="auto-style12"></strong> <a href="EditUsers"> 
+					<strong> 
+					<input
+							type="button" value="Cancel" class="auto-style12" /></strong>
 					</a>
 				</tr>
 			</table>

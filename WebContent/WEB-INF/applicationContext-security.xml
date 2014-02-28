@@ -14,8 +14,8 @@
 	<http auto-config="true" use-expressions="true">
 
 		<intercept-url pattern="/user.jsp*" access="hasRole('Employee')" />
-		<intercept-url pattern="/admin.jsp*" access="hasAnyRole('HR', 'SuperAdmin')" />
-		<intercept-url pattern="/Login" access="hasAnyRole('Employee', 'HR', 'SuperAdmin')" />
+		<intercept-url pattern="/Login" access="hasAnyRole('Employee','HR', 'SuperAdmin')" />
+		<intercept-url pattern="/admin.jsp*" access="hasAnyRole( 'HR', 'SuperAdmin')" />
 		<intercept-url pattern="/adduser.jsp*" access="hasAnyRole('HR', 'SuperAdmin')" />
 		<intercept-url pattern="/Registration" access="hasAnyRole('HR', 'SuperAdmin')" />
 		<intercept-url pattern="/ViewUsers" access="hasAnyRole('HR', 'SuperAdmin')" />
