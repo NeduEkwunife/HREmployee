@@ -45,11 +45,14 @@ public class Login extends HttpServlet {
 			} 
 			
 		} catch (ClassCastException e) {
-			response.sendRedirect("/" + request.getContextPath());
+			//response.sendRedirect("/" + request.getContextPath());
+			response.sendRedirect("logout");
 			e.printStackTrace();
 		} catch (Exception ex) {
+			response.sendRedirect("logout");
+			//response.sendRedirect("/" + request.getContextPath());
 			ex.printStackTrace();
-			response.sendRedirect("/" + request.getContextPath());
+			
 		}
 	}
 

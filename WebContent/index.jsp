@@ -5,13 +5,18 @@
 <head>
 <title>Welcome Page</title>
 <style>
-.errorblock {
-	color: #ff0000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
+.errorblock 
+{
+	color: white;
+	background-color: #6B2400;
+	width:100%;
+	height:100px;
+	text-align:center;
+	font-size:18px;
+	padding:0px;
+	margin:0px;
 }
+
 .button
 {
 	background-color:#6B2400;
@@ -22,15 +27,50 @@
     color:white;
     font-weight:bold;
 }
+.btn
+{
+	background-color:#6B2400;
+	width:50px;
+    height: 30px;
+     text-transform: none;
+    border:1px solid transparent;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+a
+{
+    cursor:pointer;
+}
+
 </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$('.btn').click(function(e)
+		{
+    $('.errorblock').slideUp();
+    e.stopPropagation();
+});
+$(document).click(function()
+{ 
+    $('.errorblock').slideUp();
+});
+
+</script>
 </head>
 
 <body onload='document.f.j_username.focus();' style="background-image: url('images/home1.jpg'); background-repeat:repeat; ">
+
 <c:if test="${not empty param.login_error}">
-		<div class="errorblock">
+		
+		<div class="errorblock" >
+		<button class="btn">Close</button>
+		<br/>
 			Your login attempt was not successful, try again.<br /> Reason :
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
+		
 	</c:if>
 	<table  align="right" style="border: none;" cellspacing="0" cellpadding="0">
 		
@@ -73,9 +113,7 @@
 		</tr>
 		
 	</table>
-	
-	<!--  
-	<div align="center">
+<div align="center">
 	
 	<% //get value sent by Home servlet
   UserCredential cre = (UserCredential)request.getAttribute("sessData");
@@ -92,7 +130,6 @@
     <% //close the if statement 
    }%>
 </div>
--->
 
 </body>
 </html>
